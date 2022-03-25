@@ -12,24 +12,22 @@ import javax.swing.JOptionPane;
  */
 public class ThreadOne implements Runnable{
     Thread th;
-    String name;
+    String msg;
+    CallMe target;
 
-    public ThreadOne(String name) {
-        this.name = name;
-        th = new Thread(this, this.name);
+    public ThreadOne(CallMe target, String msg) {
+        this.msg = msg;
+        this.target = target;
+        th = new Thread(this);
         //JOptionPane.showMessageDialog(null,  "Doughter Thread created", th.getName(), JOptionPane.DEFAULT_OPTION);
-        System.out.println("doughter thread: "+ this.name +" created");
+        System.out.println("doughter thread: "+ this.toString() +" created");
         th.start();
-
-        /*super("demonstrated thread");
-        System.out.println("doughter thread: "+ this +" created");
-        start();
-*/
     }
     
     @Override
     public void run() {
-        try { 
+        target.call(msg);
+        /*try { 
             for (int i = 5; i > 0; i--) {
                 //JOptionPane.showMessageDialog(null, ""+i, "Дoчepний поток : " + th.getName(), JOptionPane.DEFAULT_OPTION);
                 System.out.println("doughter thread: "+ this.name + " " + i);
@@ -42,6 +40,7 @@ public class ThreadOne implements Runnable{
         //JOptionPane.showMessageDialog(null, "Дoчepний поток завершен . " );
         System.out.println("doughter thread: stopped");
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+*/    
     }
     
 }
