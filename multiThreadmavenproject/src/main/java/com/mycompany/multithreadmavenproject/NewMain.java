@@ -17,16 +17,22 @@ public class NewMain {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        Thread th = Thread.currentThread();
-        JOptionPane.showMessageDialog(null, th, "Thread name: " + th.getName(), JOptionPane.DEFAULT_OPTION);
+        new ThreadOne("first");
+        new ThreadOne("second");
+        new ThreadOne("third");
+        
         try {
-            for (int i = 0; i < 5; i++){
-                JOptionPane.showMessageDialog(null, i, "Test", JOptionPane.DEFAULT_OPTION);
+            for (int i = 5; i > 0; i--){
+                System.out.println("main thread: " + i);
+                //JOptionPane.showMessageDialog(null, "" + i , "main thread: " + Thread.currentThread().getName(), JOptionPane.DEFAULT_OPTION);
                 Thread.sleep(1000);
             }
         } catch(InterruptedException e) {
-            JOptionPane.showMessageDialog(null, "", "Stop", JOptionPane.CLOSED_OPTION);
+            System.out.println("main thread: interrupted");
+            //JOptionPane.showMessageDialog(null, "interrupted", "main thread: " + Thread.currentThread().getName(), JOptionPane.CLOSED_OPTION);
         }
+        System.out.println("main thread: stoped");
+        //JOptionPane.showMessageDialog(null, "stoped", "main thread: " + Thread.currentThread().getName(), JOptionPane.CLOSED_OPTION);
         
     }
     
